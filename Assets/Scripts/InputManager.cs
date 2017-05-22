@@ -5,9 +5,6 @@ using UnityEngine;
 public class InputManager : MonoBehaviour
 {
     private static InputManager instance;
-
-    private static Vector3 TouchOldPosition;
-
     private InputManager()
     {
         Debug.Log("Create SoundManager instance");
@@ -85,7 +82,6 @@ public class InputManager : MonoBehaviour
             {
                 //タッチしている
                 isTouch = true;
-                touch = Input.GetTouch(0);
 
                 if (touch.phase == TouchPhase.Began)
                 {
@@ -143,21 +139,8 @@ public class InputManager : MonoBehaviour
 
         else
         {
-            touch = Input.GetTouch(0);
 
-            Vector3 vec = touch.position;
-
-            vec.z = 10f;
-
-            vec = Camera.main.ScreenToWorldPoint(vec);
-
-            Vector3 old = vec;
-
-            vec = vec - TouchOldPosition;
-
-            TouchOldPosition = old;
-
-            return vec.x;
+            return touch.position.x;
         }
     }
 
@@ -170,21 +153,8 @@ public class InputManager : MonoBehaviour
 
         else
         {
-            touch = Input.GetTouch(0);
 
-            Vector3 vec = touch.position;
-
-            vec.z = 10f;
-
-            vec = Camera.main.ScreenToWorldPoint(vec);
-
-            Vector3 old = vec;
-
-            vec = vec - TouchOldPosition;
-
-            TouchOldPosition = old;
-
-            return vec.y;
+            return touch.position.y;
         }
     }
 }
