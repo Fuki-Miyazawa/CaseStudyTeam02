@@ -93,6 +93,11 @@ public class PlayerArmStart : MonoBehaviour {
                 ResetArm();
                 break;
         }
+
+        if(InputManager.GetTouchRelease())
+        {
+            Onclick();
+        }
 	}
 
     //ボタンがクリックされ、離された瞬間に実行される
@@ -109,12 +114,14 @@ public class PlayerArmStart : MonoBehaviour {
         ScreenPointL = Camera.main.WorldToScreenPoint(SaveArmL.transform.position);
         ScreenPointR = Camera.main.WorldToScreenPoint(SaveArmR.transform.position);
 
-        offsetL = SaveArmL.transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x,
-        Input.mousePosition.y,
+        Touch touch = Input.GetTouch(0);
+
+        offsetL = SaveArmL.transform.position - Camera.main.ScreenToWorldPoint(new Vector3(touch.position.x,
+        touch.position.y,
         ScreenPointL.z));
 
-        offsetR = SaveArmR.transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x,
-        Input.mousePosition.y,
+        offsetR = SaveArmR.transform.position - Camera.main.ScreenToWorldPoint(new Vector3(touch.position.x,
+        touch.position.y,
         ScreenPointR.z));
     }
 
@@ -148,9 +155,7 @@ public class PlayerArmStart : MonoBehaviour {
         float horizonal = InputManager.GetTouchMoveHorizonal();
 
         SaveArmL.transform.Translate(new Vector3(horizonal, 0.5f,0));
-        SaveArmR.transform.Translate(new Vector3(horizonal, 0.5f, 0));
-
-        
+        SaveArmR.transform.Translate(new Vector3(horizonal, 0.5f, 0));      
     }
 
     //攻撃を実行する関数
