@@ -65,7 +65,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ArmL: {fileID: 1175186334978372, guid: 13221e64dd949424c9cd7150f5d506b2, type: 2}
   ArmR: {fileID: 1964020031974516, guid: ca5b68fbf0add26409746d6bc4df3721, type: 2}
-  MoveSpeed: 0.5
-  AttackSpeed: 15
-  AttackTime: 1.5
-  ArmDistance: 30
+  initMoveSpeed: 0.5
+  AttackSpeed: 1
+  AttackTime: 0.8
+  ArmDistance: 20
