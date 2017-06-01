@@ -20,7 +20,10 @@ public class PlayerArmStart : MonoBehaviour {
     private GameObject SaveArmL;
     private GameObject SaveArmR;
 
-    public float MoveSpeed;
+    private Rigidbody2D rigidL;
+    private Rigidbody2D rigidR;
+
+    public float initMoveSpeed;
     public float AttackSpeed;
     public float AttackTime;
 
@@ -50,6 +53,9 @@ public class PlayerArmStart : MonoBehaviour {
         SaveArmR.transform.position = new Vector3(transform.position.x + ArmDistance,
         ArmInitPositionY,
         1);
+
+        rigidL = SaveArmL.GetComponent<Rigidbody2D>();
+        rigidR = SaveArmR.GetComponent<Rigidbody2D>();
 
         ArmMode = ARMMODE.NORMAL;
 
@@ -91,6 +97,7 @@ public class PlayerArmStart : MonoBehaviour {
 
             case ARMMODE.RESET://リセット
                 ResetArm();
+                //swayCamera.ResetPower();
                 break;
         }
 
@@ -154,8 +161,8 @@ public class PlayerArmStart : MonoBehaviour {
 
         float horizonal = InputManager.GetTouchMoveHorizonal();
 
-        SaveArmL.transform.Translate(new Vector3(horizonal, 0.5f,0));
-        SaveArmR.transform.Translate(new Vector3(horizonal, 0.5f, 0));      
+        SaveArmL.transform.Translate(new Vector3(horizonal, initMoveSpeed, 0));
+        SaveArmR.transform.Translate(new Vector3(horizonal, initMoveSpeed, 0));
     }
 
     //攻撃を実行する関数
@@ -163,8 +170,10 @@ public class PlayerArmStart : MonoBehaviour {
     {
         AttackTimeCount += Time.deltaTime;
 
-        SaveArmL.transform.Translate(new Vector3(0.25f, 0, 0));
-        SaveArmR.transform.Translate(new Vector3(-0.25f, 0, 0));
+        float force = AttackSpeed * AttackTimeCount;
+
+        SaveArmL.transform.Translate(new Vector3(force, 0, 0));
+        SaveArmR.transform.Translate(new Vector3(-force, 0, 0));
     }
 
     //腕を縮ませる

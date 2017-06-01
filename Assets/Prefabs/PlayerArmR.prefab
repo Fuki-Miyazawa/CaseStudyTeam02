@@ -41,6 +41,7 @@ GameObject:
   - component: {fileID: 212560282156747050}
   - component: {fileID: 61470834929917596}
   - component: {fileID: 50568431244780458}
+  - component: {fileID: 114966080872079004}
   m_Layer: 11
   m_Name: PlayerHandR
   m_TagString: Hand
@@ -139,7 +140,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 100
+  m_Mass: 1000
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -265,6 +266,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f242301c6c819340906b03c54ed5aac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114966080872079004
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1854472154085658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 530872ce57e43e74f82ac9b0195fd543, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particle: {fileID: 0}
 --- !u!212 &212262511404366378
 SpriteRenderer:
   m_ObjectHideFlags: 1
